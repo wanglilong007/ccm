@@ -1,0 +1,17 @@
+
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: org.wanglilong.ccm.dao.api  # 注意：对应实体类的路径
+  
+spring:
+  datasource:
+      name: ccmdb
+      url: jdbc:mysql://127.0.0.1:3306/ccm
+      username: root
+      password: wanglilong007
+      driver-class-name: com.mysql.jdbc.Driver
+  flyway:
+      baseline-on-migrate: true
+      locations:
+          - classpath:/db/migration

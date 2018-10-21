@@ -1,25 +1,16 @@
 package org.wanglilong.ccm.dto.response;
 
-import java.util.Date;
+import org.wanglilong.ccm.dto.BaseResponseDTO;
 
-import org.wanglilong.ccm.dto.BaseDTO;
+public class CreditCardResponse extends BaseResponseDTO {
 
-public class CreditCardResponse extends BaseDTO {
-
-	private String id;
 	private String bankId;
 	private String number;
 	private Integer statementDate;
 	private Integer paymentDate;
-	private Date createTime;
-	private Date updateTime;
+	private Integer creditLimit;
+	private Integer availableLimit;
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getBankId() {
 		return bankId;
 	}
@@ -45,18 +36,18 @@ public class CreditCardResponse extends BaseDTO {
 	public void setPaymentDate(Integer paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-	public Date getCreateTime() {
-		return createTime;
+
+	public Integer getCreditLimit() {
+		return creditLimit;
 	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreditLimit(Integer creditLimit) {
+		this.creditLimit = creditLimit;
 	}
-	public Date getUpdateTime() {
-		return updateTime;
+	public Integer getAvailableLimit() {
+		return availableLimit;
 	}
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
+	public void setAvailableLimit(Integer availableLimit) {
+		this.availableLimit = availableLimit;
 	}
-	
 	
 }

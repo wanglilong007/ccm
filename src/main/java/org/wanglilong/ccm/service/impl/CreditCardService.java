@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.wanglilong.ccm.dao.api.CreditCardDao;
 import org.wanglilong.ccm.dto.request.CreditCardAddOneRequest;
-import org.wanglilong.ccm.dto.request.CreditCardUpdataOneRequest;
+import org.wanglilong.ccm.dto.request.CreditCardUpdateOneRequest;
 import org.wanglilong.ccm.dto.response.CreditCardResponse;
 import org.wanglilong.ccm.exception.NotFoundException;
 import org.wanglilong.ccm.po.CreditCard;
@@ -56,7 +56,7 @@ public class CreditCardService implements ICreditCardService {
 	}
 
 	@Override
-	public int updateOne(String id, CreditCardUpdataOneRequest creditCardUpdataOneRequest) {
+	public int updateOne(String id, CreditCardUpdateOneRequest creditCardUpdataOneRequest) {
 		CreditCard creditCard = new CreditCard();
 		BeanUtils.copyProperties(creditCardUpdataOneRequest, creditCard);
 		creditCard.setId(id);

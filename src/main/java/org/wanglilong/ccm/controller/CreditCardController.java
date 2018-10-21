@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.wanglilong.ccm.dto.request.CreditCardAddOneRequest;
-import org.wanglilong.ccm.dto.request.CreditCardUpdataOneRequest;
+import org.wanglilong.ccm.dto.request.CreditCardUpdateOneRequest;
 import org.wanglilong.ccm.dto.response.CreditCardResponse;
 import org.wanglilong.ccm.exception.NotFoundException;
 import org.wanglilong.ccm.service.api.ICreditCardService;
@@ -42,7 +42,7 @@ public class CreditCardController {
 	}
 	
 	@PutMapping("/{id}")
-	public int updateOne(@PathVariable String id, @RequestBody CreditCardUpdataOneRequest creditCard){
+	public int updateOne(@PathVariable String id, @RequestBody CreditCardUpdateOneRequest creditCard){
 		return creditCardService.updateOne(id, creditCard);
 	}
 	

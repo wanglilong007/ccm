@@ -97,7 +97,7 @@
 				password = #{password,jdbcType=VARCHAR},
 			</if>
 			<if test="true">
-				update_date = now(),
+				update_time = now(),
 			</if>
 		</set>
 		<where>

@@ -1,22 +1,13 @@
 package org.wanglilong.ccm.dto.response;
 
-import java.util.Date;
+import org.wanglilong.ccm.dto.BaseResponseDTO;
 
-import org.wanglilong.ccm.dto.BaseDTO;
-
-public class UserResponse extends BaseDTO {
-	private String id;
+public class UserResponse extends BaseResponseDTO {
+	
 	private String name;
 	private String phone;
 	private String email;
-	private Date createTime;
-	private Date updateTime;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
@@ -35,18 +26,5 @@ public class UserResponse extends BaseDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-	
 	
 }

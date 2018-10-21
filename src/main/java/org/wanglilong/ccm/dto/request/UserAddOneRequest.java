@@ -1,8 +1,8 @@
 package org.wanglilong.ccm.dto.request;
 
-import org.wanglilong.ccm.dto.BaseDTO;
+import org.wanglilong.ccm.dto.BaseRequestDTO;
 
-public class UserAddOneRequest extends BaseDTO {
+public class UserAddOneRequest extends BaseRequestDTO {
 	private String name;
 	private String password;
 	private String phone;

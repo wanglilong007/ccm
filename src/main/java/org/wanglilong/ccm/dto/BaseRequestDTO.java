@@ -1,5 +1,5 @@
 package org.wanglilong.ccm.dto;
 
-public class BaseDTO {
+public class BaseRequestDTO {
 	
 }

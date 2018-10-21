@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wanglilong.ccm.dao.api.TransactionDao" >
-  
+	<resultMap id="BaseResultMap" type="org.wanglilong.ccm.po.Transaction">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="credit_card_id" property="creditCardId" jdbcType="VARCHAR" />
+		<result column="amount" property="amount" jdbcType="INTEGER" />
+		<result column="time" property="time" jdbcType="TIMESTAMP" />
+		<result column="merchant" property="merchant" jdbcType="VARCHAR" />
+		<result column="creator" property="creator" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, credit_card_id, amount, time, merchant, creator, create_time, update_time
+	</sql>
+
+	<sql id="common_query_condition">
+		<if test="true">
+			AND is_deleted=0
+		</if>
+		<if test="true">
+			AND creator=#{creator,jdbcType=VARCHAR}
+		</if>
+	</sql>
+
+	<select id="findOne" resultMap="BaseResultMap" parameterType="org.wanglilong.ccm.po.Transaction">
+		select
+		<include refid="Base_Column_List" />
+		from transaction
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap" parameterType="org.wanglilong.ccm.po.Transaction">
+		select
+		<include refid="Base_Column_List" />
+		from transaction
+		<where>
+			<if test="creditCardId != null">
+				credit_card_id = #{creditCardId}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</select>
+
+	<update id="deleteOne" parameterType="org.wanglilong.ccm.po.Transaction">
+		update transaction
+		set
+		is_deleted = 1
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</update>
+
+	<delete id="deleteAll">
+		delete from transaction
+	</delete>
+
+	<insert id="addOne" parameterType="org.wanglilong.ccm.po.Transaction">
+		insert into transaction
+		(
+		<include refid="Base_Column_List" />
+		)
+		values (#{id,jdbcType=VARCHAR},
+		#{creditCardId,jdbcType=VARCHAR},
+		#{amount,jdbcType=INTEGER},
+		#{time,jdbcType=TIMESTAMP},
+		#{merchant,jdbcType=VARCHAR},
+		#{creator,jdbcType=VARCHAR},
+		now(),
+		now())
+	</insert>
+
+	<update id="updateOne" parameterType="org.wanglilong.ccm.po.Transaction">
+		update transaction
+		<set>
+			<if test="true">
+				update_time = now(),
+			</if>
+		</set>
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</update>
 </mapper>

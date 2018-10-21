@@ -13,6 +13,7 @@ public class BasePO {
 	private Date deleteTime;
 	private String creator;
 
+	
 	public BasePO(){
 		try{
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -66,5 +67,5 @@ public class BasePO {
 	public void setDeleteTime(Date deleteTime) {
 		this.deleteTime = deleteTime;
 	}
-	
+
 }

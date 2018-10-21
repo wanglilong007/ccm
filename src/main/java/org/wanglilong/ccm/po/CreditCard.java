@@ -8,6 +8,8 @@ public class CreditCard extends BasePO{
 	private String number;
 	private Integer statementDate;
 	private Integer paymentDate;
+	private Integer creditLimit;
+	private Integer availableLimit;
 	
 	public String getId() {
 		return id;
@@ -38,6 +40,19 @@ public class CreditCard extends BasePO{
 	}
 	public void setPaymentDate(Integer paymentDate) {
 		this.paymentDate = paymentDate;
+	}
+
+	public Integer getCreditLimit() {
+		return creditLimit;
+	}
+	public void setCreditLimit(Integer creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+	public Integer getAvailableLimit() {
+		return availableLimit;
+	}
+	public void setAvailableLimit(Integer availableLimit) {
+		this.availableLimit = availableLimit;
 	}
 
 }

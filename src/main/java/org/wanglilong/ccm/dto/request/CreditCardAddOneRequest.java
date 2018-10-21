@@ -1,12 +1,14 @@
 package org.wanglilong.ccm.dto.request;
 
-import org.wanglilong.ccm.dto.BaseDTO;
+import org.wanglilong.ccm.dto.BaseRequestDTO;
 
-public class CreditCardAddOneRequest extends BaseDTO{
+public class CreditCardAddOneRequest extends BaseRequestDTO{
 	private String bankId;
 	private String number;
 	private Integer statementDate;
 	private Integer paymentDate;
+	private Integer creditLimit;
+	
 	public String getBankId() {
 		return bankId;
 	}
@@ -30,6 +32,12 @@ public class CreditCardAddOneRequest extends BaseDTO{
 	}
 	public void setPaymentDate(Integer paymentDate) {
 		this.paymentDate = paymentDate;
+	}
+	public Integer getCreditLimit() {
+		return creditLimit;
+	}
+	public void setCreditLimit(Integer creditLimit) {
+		this.creditLimit = creditLimit;
 	}
 
 }

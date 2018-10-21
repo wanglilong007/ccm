@@ -1,20 +1,12 @@
-package org.wanglilong.ccm.po;
+package org.wanglilong.ccm.dto.request;
 
+import org.wanglilong.ccm.dto.BaseDTO;
 
-public class CreditCard extends BasePO{
-
-	private String id;
+public class CreditCardAddOneRequest extends BaseDTO{
 	private String bankId;
 	private String number;
 	private Integer statementDate;
 	private Integer paymentDate;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getBankId() {
 		return bankId;
 	}

@@ -1,19 +1,12 @@
-package org.wanglilong.ccm.po;
+package org.wanglilong.ccm.dto.request;
 
-public class User  extends BasePO{
+import org.wanglilong.ccm.dto.BaseDTO;
 
-	private String id;
+public class UserAddOneRequest extends BaseDTO {
 	private String name;
 	private String password;
 	private String phone;
 	private String email;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -37,12 +30,6 @@ public class User  extends BasePO{
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", phone=" + phone + ", email=" + email
-				+ "]";
 	}
 	
 }

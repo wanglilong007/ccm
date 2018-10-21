@@ -1,0 +1,1 @@
+INSERT INTO `CCM`.`bank` (`id`,`name`,`phone`,`wx_id`) VALUES ('1', 'cbc', '95555', '123456577');

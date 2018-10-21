@@ -2,7 +2,7 @@ package org.wanglilong.ccm.po;
 
 import java.util.Date;
 
-public class Transaction {
+public class Transaction extends BasePO{
 
 	private String id;
 	private String creditCardId;

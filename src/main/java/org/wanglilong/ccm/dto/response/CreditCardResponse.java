@@ -1,13 +1,18 @@
-package org.wanglilong.ccm.po;
+package org.wanglilong.ccm.dto.response;
 
+import java.util.Date;
 
-public class CreditCard extends BasePO{
+import org.wanglilong.ccm.dto.BaseDTO;
+
+public class CreditCardResponse extends BaseDTO {
 
 	private String id;
 	private String bankId;
 	private String number;
 	private Integer statementDate;
 	private Integer paymentDate;
+	private Date createTime;
+	private Date updateTime;
 	
 	public String getId() {
 		return id;
@@ -27,6 +32,7 @@ public class CreditCard extends BasePO{
 	public void setNumber(String number) {
 		this.number = number;
 	}
+
 	public Integer getStatementDate() {
 		return statementDate;
 	}
@@ -39,5 +45,18 @@ public class CreditCard extends BasePO{
 	public void setPaymentDate(Integer paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+	
+	
 }

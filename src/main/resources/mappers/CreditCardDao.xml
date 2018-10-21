@@ -1,51 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.wanglilong.ccm.dao.api.CreditCardDao" >
+<mapper namespace="org.wanglilong.ccm.dao.api.CreditCardDao">
 
-  <resultMap id="BaseResultMap" type="org.wanglilong.ccm.po.CreditCard" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="bank_id" property="bankId" jdbcType="VARCHAR" />
-    <result column="number" property="number" jdbcType="VARCHAR" />
-    <result column="owner_id" property="ownerId" jdbcType="VARCHAR" />
-  </resultMap>
-  
-  <sql id="Base_Column_List" >
-    id, bank_id, number, owner_id
-  </sql>
-  
-  <select id="findOne" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from credit_card
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  
-  <delete id="deleteOne" parameterType="java.lang.String" >
-    delete from credit_card
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  
-  <insert id="addOne" parameterType="org.wanglilong.ccm.po.CreditCard" >
-    insert into credit_card (id, bank_id, number, 
-      owner_id)
-    values (#{id,jdbcType=VARCHAR}, #{bankId,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
-      #{ownerId,jdbcType=VARCHAR})
-  </insert>
- 
-  <update id="updateOne" parameterType="org.wanglilong.ccm.po.CreditCard" >
-    update credit_card
-    <set>
-      <if test="bankId != null" >
-        bank_id = #{bankId,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null" >
-        number = #{number,jdbcType=VARCHAR},
-      </if>
-      <if test="ownerId != null" >
-        owner_id = #{ownerId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  
+	<resultMap id="BaseResultMap" type="org.wanglilong.ccm.po.CreditCard">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="bank_id" property="bankId" jdbcType="VARCHAR" />
+		<result column="number" property="number" jdbcType="VARCHAR" />
+		<result column="creator" property="creator" jdbcType="VARCHAR" />
+		<result column="statement_date" property="statementDate" jdbcType="TINYINT" />
+		<result column="payment_date" property="paymentDate" jdbcType="TINYINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, bank_id, number, creator, statement_date, payment_date, create_time, update_time
+	</sql>
+
+	<sql id="common_query_condition">
+		<if test="true">
+			AND is_deleted=0
+		</if>
+		<if test="true">
+			AND creator=#{creator,jdbcType=VARCHAR}
+		</if>
+	</sql>
+
+	<select id="findOne" resultMap="BaseResultMap"
+		parameterType="org.wanglilong.ccm.po.CreditCard">
+		select
+		<include refid="Base_Column_List" />
+		from credit_card
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap"
+		parameterType="org.wanglilong.ccm.po.CreditCard">
+		select
+		<include refid="Base_Column_List" />
+		from credit_card
+		<where>
+			<if test="bankId != null">
+				bank_id = #{bankId}
+			</if>
+			<if test="number != null">
+				AND number = #{number}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</select>
+
+	<delete id="deleteAll">
+		delete from credit_card
+	</delete>
+
+	<insert id="addOne" parameterType="org.wanglilong.ccm.po.CreditCard">
+		insert into credit_card 
+		(<include refid="Base_Column_List" />)
+		values 
+		(#{id,jdbcType=VARCHAR},
+		#{bankId,jdbcType=VARCHAR},
+		#{number,jdbcType=VARCHAR},
+		#{creator,jdbcType=VARCHAR},
+		#{statementDate,jdbcType=TINYINT},
+		#{paymentDate,jdbcType=TINYINT},
+		now(),
+		now())
+	</insert>
+
+	<update id="deleteOne" parameterType="org.wanglilong.ccm.po.CreditCard">
+		update credit_card
+		set
+		is_deleted = 1,
+		delete_time = now()
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</update>
+
+	<update id="updateOne" parameterType="org.wanglilong.ccm.po.CreditCard">
+		update credit_card
+		<set>
+			<if test="statementDate != null">
+				statement_date = #{statementDate,jdbcType=TINYINT},
+			</if>
+			<if test="paymentDate != null">
+				payment_date = #{paymentDate,jdbcType=TINYINT},
+			</if>
+			<if test="true">
+				update_date = now(),
+			</if>
+		</set>
+		<where>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR}
+			</if>
+			<include refid="common_query_condition" />
+		</where>
+	</update>
+
 </mapper>

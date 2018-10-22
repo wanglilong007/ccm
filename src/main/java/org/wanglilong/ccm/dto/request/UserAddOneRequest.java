@@ -1,12 +1,26 @@
 package org.wanglilong.ccm.dto.request;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.wanglilong.ccm.dto.BaseRequestDTO;
 
 public class UserAddOneRequest extends BaseRequestDTO {
+	
+	@NotNull
+	@Size(max=20,min=3)
 	private String name;
+	
+	@NotNull
+	@Size(max=20,min=6)
 	private String password;
+	
 	private String phone;
+	
+	@Email
 	private String email;
+	
 	public String getName() {
 		return name;
 	}

@@ -2,6 +2,8 @@ package org.wanglilong.ccm.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +31,7 @@ public class UserController {
 	private IUserService userService;
 	
 	@PostMapping
-	public String addOne(@RequestBody UserAddOneRequest user) {
+	public String addOne(@Valid @RequestBody UserAddOneRequest user) {
 		return userService.addOne(user);
 	}
 
@@ -52,7 +54,7 @@ public class UserController {
 	}
 
 	@PutMapping("/me")
-	public int updateOne(@RequestBody UserUpdateOneRequest user) {
+	public int updateOne(@Valid @RequestBody UserUpdateOneRequest user) {
 		return userService.updateOne(SessionUtil.getCurrentUser().getId(), user);
 	}
 

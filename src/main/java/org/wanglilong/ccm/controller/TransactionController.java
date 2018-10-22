@@ -2,6 +2,8 @@ package org.wanglilong.ccm.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,13 +37,13 @@ public class TransactionController {
 	
 	@PostMapping
 	public String addOne(@PathVariable String creditCardId,
-			@RequestBody TransactionAddOneRequest transactionAddOneRequest){
+			@Valid @RequestBody TransactionAddOneRequest transactionAddOneRequest){
 		return transactionService.addOne(creditCardId, transactionAddOneRequest);
 	}
 	
 	@PutMapping("/{id}")
 	public int updateOne(@PathVariable String creditCardId, @PathVariable String id,
-			@RequestBody TransactionUpdateOneRequest transactionUpdateOneRequest){
+			@Valid @RequestBody TransactionUpdateOneRequest transactionUpdateOneRequest){
 		return transactionService.updateOne(creditCardId, id, transactionUpdateOneRequest);
 	}
 	
